@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Getting Started: Serving Web Content</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function doAjax() {
+
+            var inputText = $('#inp').val();
+
+            $.ajax({
+                url : '/hello',
+                type: 'GET',
+                data : ({
+                    text: inputText
+                }),
+                success: function (data) {
+
+                    var result = data.text;
+                    // language=JQuery-CSS
+                    $('#result').text(result);
+                    alert(result);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+
+<p>Hello</p>
+<label>
+    <input id="inp"/>
+    <input id="but" type="button" onclick="doAjax()"/>
+    <p id="result"></p>
+    <a href="/calc">Calculator</a>
+</label>
+</body>
+</html>

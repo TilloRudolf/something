@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Calculator</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function doAjax(operation) {
+
+            var inputText = $('#inp').val();
+            var inputText2 = $('#inp2').val();
+//            var operation = $('#summ').val();
+
+            $.ajax({
+                url : '/operation',
+                type: 'GET',
+                data : ({
+                    //TODO
+                    text1: inputText, text2:inputText2, text3:operation
+                }),
+                success: function (data) {
+
+                    var resul = data.result;
+                    // language=JQuery-CSS
+                    $('#result1').text(resul);
+                    alert(resul);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+
+<p>Hello</p>
+<form>
+    <h2>Enter first number</h2>
+    <input id="inp" type="number"/><br/>
+    <h2>Enter second number</h2>
+    <input id="inp2" type="number"/><br/>
+    <p>
+    <input id="but summ" type="button" value="+" onclick="doAjax(0)"/>
+    <input id="but min" type="button" value="-" onclick="doAjax(1)"/>
+    <input id="but dev" type="button" value="/" onclick="doAjax(2)"/>
+    <input id="but mult" type="button" value="*" onclick="doAjax(3)"/>
+    </p>
+    <br/>
+    <p>Result
+    <p id="result1"></p>
+    </p>
+
+</form>
+</body>
+</html>
