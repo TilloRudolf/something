@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Funny words</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function doWords() {
+
+            var inputText = $('#text').val();
+            var inputText2 = $('#req').val();
+
+            $.ajax({
+                url : '/word',
+                type: 'GET',
+                data : ({
+                    text1: inputText, text2: inputText2
+                }),
+                success: function (data) {
+
+                    var resul = data.result;
+                    alert(resul);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <p>Hello</p>
+    <input id="text"/>
+    <input id="req"/>
+    <input id="res" type="button" value="go" onclick="doWords()"/>
+
+</body>
+</html>
