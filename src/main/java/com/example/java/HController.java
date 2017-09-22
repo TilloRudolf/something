@@ -65,4 +65,18 @@ public class HController {
 //        String res = calCtr.getResult();
         return calCtr;
     }
+
+    @RequestMapping("/hei")
+    public String hei(){
+        return "word";
+    }
+
+    @RequestMapping(value = "/word", method = RequestMethod.GET)
+    public @ResponseBody
+    WordController doWord(@RequestParam(value = "text1", required = false, defaultValue = "null") String text,
+                          @RequestParam(value = "text2", required = false, defaultValue = "null") String req){
+        WordController word = new WordController();
+        word.goWord(text, req);
+        return word;
+    }
 }
