@@ -79,4 +79,13 @@ public class HController {
         word.goWord(text, req);
         return word;
     }
+
+    @RequestMapping(value = "/wordcheck", method = RequestMethod.GET)
+    public @ResponseBody
+    WordCheck check(@RequestParam(value = "text", required = false, defaultValue = " ")String text){
+        WordCheck wordCheck = new WordCheck();
+        wordCheck.doCheck(text);
+        wordCheck.getWrongChar();
+        return wordCheck;
+    }
 }

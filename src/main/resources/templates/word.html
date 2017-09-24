@@ -23,13 +23,34 @@
                 }
             });
         }
+        function doCheck() {
+            var inputText = $('#text').val();
+
+            $.ajax({
+                url : '/wordcheck',
+                type : 'GET',
+                data : ({
+                    text: inputText
+                }),
+                success: function (data) {
+                    var output = data.text;
+                    var wrongChar = data.wrongChar;
+//                    alert(wrongChar);
+                    if (wrongChar === true) {
+                        alert(output);
+                        $('#text').val('');
+                    }
+                }
+            });
+
+        }
     </script>
 </head>
 <body>
     <p>Hello</p>
-    <input id="text"/>
+    <input id="text" onkeyup="doCheck()"/>
     <input id="req"/>
-    <input id="res" type="button" value="go" onclick="doWords()"/>
+    <input id="res" type="button" value="go" onclick="doWords()" />
 
 </body>
 </html>
